@@ -1,10 +1,10 @@
 package com.nfcm.boot.config;
 
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -22,12 +22,12 @@ public class RedisConfig {
 	/**
 	 * 申明缓存管理器，会创建一个切面（aspect）并触发Spring缓存注解的切点（pointcut）
 	 * 根据类或者方法所使用的注解以及缓存的状态，这个切面会从缓存中获取数据，将数据添加到缓存之中或者从缓存中移除某个值
-	 * 
+	 
 	 * @return
 	 */
 	@Bean
-	public CacheManager cacheManager() {
-		return new ConcurrentMapCacheManager();
+	public RedisCacheManager cacheManager(RedisTemplate template) {
+		return new RedisCacheManager(template);
 	}
 
 	@Bean
@@ -40,6 +40,7 @@ public class RedisConfig {
 	}
 
 	@Bean
+	@Primary
 	public RedisTemplate redisTemplate(RedisConnectionFactory factory) {
 		// 创建一个模板类
 		RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();

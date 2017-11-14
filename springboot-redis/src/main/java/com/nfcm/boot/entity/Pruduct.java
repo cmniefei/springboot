@@ -12,7 +12,6 @@ public class Pruduct implements Serializable{
 	String name;
 	String desc;
 	
-	
 	public Pruduct() {
 	}
 	public Pruduct(int id, String name, String desc) {
@@ -43,6 +42,4 @@ public class Pruduct implements Serializable{
 	public String toString() {
 		return "Pruduct [id=" + id + ", name=" + name + ", desc=" + desc + "]";
 	}
-	
-
 }

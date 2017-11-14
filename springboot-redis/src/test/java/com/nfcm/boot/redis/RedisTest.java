@@ -24,6 +24,10 @@ public class RedisTest {
 	@Autowired	
 	RedisTemplate<String, Object> template;
 	
+	@Test
+	public void test(){
+		
+	}
 	
 	@Test
 	public void testRedisTemplateList(){
