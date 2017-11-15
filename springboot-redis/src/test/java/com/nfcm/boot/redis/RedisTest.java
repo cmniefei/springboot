@@ -26,7 +26,7 @@ public class RedisTest {
 	
 	@Test
 	public void test(){
-		
+		System.out.println(this.getClass().getName());
 	}
 	
 	@Test
