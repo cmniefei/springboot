@@ -1,8 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8"/>
-<title>boot</title>
-<link type="text/css" rel="stylesheet" th:href="@{/static/home.css}"></link>
+<head th:include="header :: commonHeader(boot)">
+	<meta charset="utf-8"/>
 </head>
 <body>
 <div>
@@ -52,6 +50,10 @@
 <div>
 	<span th:inline="text">[[${user.name}]]</span><br/>
 	<span th:inline="none">[[${user.name}]]</span>
+</div>
+<div>
+<div th:include="footer :: copyright"></div>
+  
 </div>
 <script th:inline="javascript">
     var name = /*[[${user.name}]]*/"lisi";

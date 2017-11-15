@@ -26,4 +26,5 @@ public class ThymeleafController {
 		
 		return "home";
 	}
+
 }
