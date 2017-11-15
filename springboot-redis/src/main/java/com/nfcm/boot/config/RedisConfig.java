@@ -40,7 +40,6 @@ public class RedisConfig {
 	}
 
 	@Bean
-	@Primary
 	public RedisTemplate redisTemplate(RedisConnectionFactory factory) {
 		// 创建一个模板类
 		RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();

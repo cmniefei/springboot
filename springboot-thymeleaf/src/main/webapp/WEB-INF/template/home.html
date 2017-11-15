@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>boot</title>
+<link type="text/css" rel="stylesheet" th:href="@{/static/home.css}"></link>
+</head>
+<body>
+<div>
+	<h1>Welcome to boot thymeleaf</h1>
+	<a th:href="@{/register}">register</a>
+	<a th:href="@{/loginster}">login</a>
+</div>
+<div >
+	<h1>当前用户</h1>
+	<span th:text="'用户名：' +${user.name}"></span><br/>
+	<span th:text="|用户名：${user.name}|"></span><br/>
+	<span th:text="'年龄*2='+ ${user.age}*2 "></span><br/>
+	<span th:text="(${user.age} ge 23?'超过年纪':'ok')"></span><br/>
+	<span th:if="(${user.age} gt 21)">年龄超过21才会显示</span>
+</div>
+<div th:switch="${user.role}">
+	Switch选择
+  <p th:case="'admin'">用户是管理员</p>
+  <p th:case="*">用户是普通人员</p>
+</div>
+
+<div th:switch="${user.role}">
+	Switch选择
+  <p th:case="'admin'">用户是管理员</p>
+  <p th:case="*">用户是普通人员</p>
+</div>
+<div>
+<table>
+  <tr>
+   	<th>index</th>
+    	<th>id</th>
+    	<th>name</th>
+   	<th>age</th>
+  </tr>
+  <tr th:each="user,iterStat: ${userList}" th:class="${iterStat.odd}? 'odd'">
+  	<td th:text="${iterStat.index}">1</td>
+    	<td th:text="${user.id}">1</td>
+    	<td th:text="${user.name}">王五</td>
+    	<td th:text="${user.age}">55</td>
+  </tr>
+</table>
+</div>
+
+<div>
+	<span th:text=" ${#dates.format(new java.util.Date().getTime(), 'yyyy-MM-dd hh:mm:ss')} "></span>
+</div>
+<div>
+	<span th:inline="text">[[${user.name}]]</span><br/>
+	<span th:inline="none">[[${user.name}]]</span>
+</div>
+<script th:inline="javascript">
+    var name = /*[[${user.name}]]*/"lisi";
+</script>
+</body>
+</html>
