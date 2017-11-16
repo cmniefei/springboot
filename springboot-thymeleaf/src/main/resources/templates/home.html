@@ -16,11 +16,18 @@
 	<span th:text="(${user.age} ge 23?'超过年纪':'ok')"></span><br/>
 	<span th:if="(${user.age} gt 21)">年龄超过21才会显示</span>
 </div>
+
+ <div th:object="${user}">
+   <p>Name: <span th:text="*{name}">wangwu</span>.</p>
+   <p>AGE: <span th:text="*{age}">22</span>.</p>
+ </div>
+
 <div th:switch="${user.role}">
 	Switch选择
   <p th:case="'admin'">用户是管理员</p>
   <p th:case="*">用户是普通人员</p>
 </div>
+
 
 <div th:switch="${user.role}">
 	Switch选择
@@ -51,10 +58,7 @@
 	<span th:inline="text">[[${user.name}]]</span><br/>
 	<span th:inline="none">[[${user.name}]]</span>
 </div>
-<div>
-<div th:include="footer :: copyright"></div>
-  
-</div>
+
 <script th:inline="javascript">
     var name = /*[[${user.name}]]*/"lisi";
 </script>

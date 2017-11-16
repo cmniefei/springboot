@@ -8,7 +8,7 @@ import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
-@Configuration
+/*@Configuration*/
 public class ThymeleafConfig {
 	
 	/**
